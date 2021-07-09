@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+
+.marker {
+  background: none;
+  border: none;
+}
+
+.marker img{
+  width: 25px;
+}
+
+.map {
+  margin-top: 20px;
+  margin-right: 1000px;
+  margin-bottom: 20px;
+  margin-left: 25px;
+  text-align: center;
+  font-size: 30%
+}
+
+h6 {
+  margin-Right: 20px;
+}
+
+.buttons {
+  margin-top: 50%;
+  margin-left: 10%;
+  margin-Right: 10%;
+  text-align: center;
+}

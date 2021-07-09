@@ -1,23 +1,35 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Map from './components/Map';
+import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  BrowserRouter as Router,
+  HashRouter,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
+import NavBar from './components/NavBar';
+import Login from './pages/Login';
+import PrivateRoute from './components/PrivateRoute';
+import Home from './pages/Home';
+import Registrarse from './pages/Registrarse';
+import Reservar from './pages/Reservar';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <HashRouter>
+        <NavBar/>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/registro" component={Registrarse}/>
+          <PrivateRoute exact path="/home/:cedula" component={Home}/>
+          <PrivateRoute exact path="/Reservar/:cedula" component={Reservar}/>
+        </Switch>
+      </HashRouter>
+
+      {/* <Map/> */}
     </div>
   );
 }
