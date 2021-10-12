@@ -31,16 +31,9 @@ const TablaBicicleta = ({bicycle,cedula,setStatus,status}) => {
                 console.log(el.Cedula);
                 if(el.Status == "ON"){
                     setValidacion(true);
-                    console.log(validacion);
-                    console.log(el.Status);
-                    console.log("hola");
-                    
                 }
                 else{
                     setValidacion(false);
-                    console.log(el.Status);
-                    console.log(validacion);
-                    console.log("hola");
                     
                 }
             }
@@ -51,9 +44,11 @@ const TablaBicicleta = ({bicycle,cedula,setStatus,status}) => {
         
         var timestampI = parseInt(timestamp);
         
-        var fecha = new Date (timestampI);
+        var fecha = new Date (timestampI * 1000);
+
         
         let url = `https://wz0z3ny13j.execute-api.eu-west-2.amazonaws.com/ModifyStatus/Transaction_Proccessor_7`;
+
         setData("" 
                     +fecha.getDate()+
                     "/"+(fecha.getMonth()+1)+
@@ -71,7 +66,7 @@ const TablaBicicleta = ({bicycle,cedula,setStatus,status}) => {
                 setUsuarios(null);
                 setErrorUsuarios(res);
             }
-        })
+        });
         
     }, [bicycle,status,response])
 

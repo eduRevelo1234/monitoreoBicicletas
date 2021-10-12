@@ -65,6 +65,10 @@ const Home = () => {
 
     }   
 
+    const historialHandler = () => {
+        history.push(`/historial/${cedula}`)
+    }
+
     return (
         <Container>
             <Row>
@@ -72,6 +76,7 @@ const Home = () => {
                 <Col xs={4} md={5} lg={5}>
                     <Button className="buttons" onClick={reservarHandler}>Reservar</Button>
                     <Button className="buttons" onClick={quitarReservaHandler}>Quitar reserva</Button>
+                    <Button className="buttons" onClick={historialHandler}> Historial </Button>
                 </Col>
                 <Col xs={3} md={2} lg={2}/>
             </Row>

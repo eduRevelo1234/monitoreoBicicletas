@@ -15,6 +15,9 @@ import PrivateRoute from './components/PrivateRoute';
 import Home from './pages/Home';
 import Registrarse from './pages/Registrarse';
 import Reservar from './pages/Reservar';
+import Historial from './pages/Historial';
+
+
 
 function App() {
   return (
@@ -26,6 +29,7 @@ function App() {
           <Route exact path="/registro" component={Registrarse}/>
           <PrivateRoute exact path="/home/:cedula" component={Home}/>
           <PrivateRoute exact path="/Reservar/:cedula" component={Reservar}/>
+          <PrivateRoute exact path="/historial/:cedula" component={Historial}/>
         </Switch>
       </HashRouter>
 
