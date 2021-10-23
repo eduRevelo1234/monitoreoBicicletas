@@ -70,40 +70,7 @@ const MapaGoogle = ({markers, setBicycle,cedula,setIdDispositivo,idDispositivo})
                 defaultCenter={{lat:-0.3508, lng: -78.452}}
                 onClick={handleClick}
                 >
-                    {/* {idDispositivo && (
-                       (idDispositivo == "0" 
-                        )?(
-                            markers.map( (el) => (
-                                <>
-                                    <Marker 
-                                        onClick= { ()=> setBicycle(el)}
-                                        key = {uuid()} 
-                                        position = {{lat: parseFloat(el.latitude), lng: parseFloat(el.longitude)}}
-                                        icon = {{url: logo, scaledSize: new window.google.maps.Size(40, 40),}}
-                                    > 
-                                    </Marker>                
-                                </>
-                            )) 
-                        ):( 
-                            markers.map((el) => 
-                                { el.deviceid === idDispositivo ? (
-                                    <>
-                                        <Marker 
-                                            onClick= { ()=> setBicycle(el)}
-                                            key = {uuid()} 
-                                            position = {{lat: parseFloat(el.latitude), lng: parseFloat(el.longitude)}}
-                                            icon = {{url: logo, scaledSize: new window.google.maps.Size(40, 40),}}
-                                        > 
-                                        </Marker>                
-                                    </>
-                                ):(
-                                    <>
-                                    </>
-                                )
-                                }
-                            )
-                        )     
-                    )} */}
+
                     {markers.map( (el) => (
                                 <>
                                     <Marker 

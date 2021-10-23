@@ -16,8 +16,7 @@ const TablaBicicleta = ({bicycle,cedula,setStatus,status}) => {
     const [usuarios, setUsuarios] = useState([]);
     const [errorUsarios, setErrorUsuarios] = useState(null);
     const [validacion, setValidacion] = useState(false);
-   
-    //https://hdy6jswri1.execute-api.eu-west-2.amazonaws.com/ModifyStatus/Transaction_Proccessor_4?Cedula=1234567890&Status=ON&Id=4D6466
+
 
     let {timestamp} = bicycle;
     useEffect(() => {
@@ -31,9 +30,16 @@ const TablaBicicleta = ({bicycle,cedula,setStatus,status}) => {
                 console.log(el.Cedula);
                 if(el.Status == "ON"){
                     setValidacion(true);
+                    console.log(validacion);
+                    console.log(el.Status);
+                    console.log("hola");
+                    
                 }
                 else{
                     setValidacion(false);
+                    console.log(el.Status);
+                    console.log(validacion);
+                    console.log("hola");
                     
                 }
             }
@@ -44,11 +50,9 @@ const TablaBicicleta = ({bicycle,cedula,setStatus,status}) => {
         
         var timestampI = parseInt(timestamp);
         
-        var fecha = new Date (timestampI * 1000);
-
+        var fecha = new Date (timestampI*1000);
         
         let url = `https://wz0z3ny13j.execute-api.eu-west-2.amazonaws.com/ModifyStatus/Transaction_Proccessor_7`;
-
         setData("" 
                     +fecha.getDate()+
                     "/"+(fecha.getMonth()+1)+
@@ -66,12 +70,11 @@ const TablaBicicleta = ({bicycle,cedula,setStatus,status}) => {
                 setUsuarios(null);
                 setErrorUsuarios(res);
             }
-        });
+        })
         
     }, [bicycle,status,response])
 
     const reservarHandler = (e) => {
-        
         console.log(validacion);
         if(validacion === true){
             alert("Ya tiene una reserva Activa");
@@ -86,7 +89,6 @@ const TablaBicicleta = ({bicycle,cedula,setStatus,status}) => {
                     setStatus(aleatorio);
                     setResponse(res);
                     setError(null);
-                    
                     helpHttp().get(url2).then((res)=>{
                         if(!res.err){
                             setResponse2(res);
@@ -108,9 +110,8 @@ const TablaBicicleta = ({bicycle,cedula,setStatus,status}) => {
 
     const quitarReservaHandler = (e) => {
         var aleatorio = Math.random();
-        let url = `https://0t7pkxgzl7.execute-api.eu-west-2.amazonaws.com/Modificar_Status/transactions?Cedula=0&DeviceId=${bicycle.deviceid}`;
-
-        let url2 = `https://hdy6jswri1.execute-api.eu-west-2.amazonaws.com/ModifyStatus/Transaction_Proccessor_4?Cedula=${cedula}&Status=OFF&Id=0`
+        let url = `https://0t7pkxgzl7.execute-api.eu-west-2.amazonaws.com/Modificar_Status/transactions?Cedula=${cedula}&DeviceId=${bicycle.deviceid}`;
+        let url2 = `https://hdy6jswri1.execute-api.eu-west-2.amazonaws.com/ModifyStatus/Transaction_Proccessor_4?Cedula=${cedula}&Status=OFF&Id=0`;
         
         helpHttp().get(url).then((res)=>{
             if(!res.err){
@@ -121,11 +122,11 @@ const TablaBicicleta = ({bicycle,cedula,setStatus,status}) => {
                     if(!res.err){
                         setResponse2(res);
                         setError(null);
-                        
                         alert("Reserva finalizada");
                     }else{
                         setResponse2(null);
                         setError(res);
+                        alert("Error");
                     }
                 })
             }else{

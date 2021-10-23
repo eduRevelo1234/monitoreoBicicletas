@@ -7,11 +7,15 @@ import Alert from 'react-bootstrap/Alert';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
+import Button from 'react-bootstrap/Button';
+import { useHistory } from 'react-router';
 
 const Historial = () => {
     const [data, setData] = useState([]);
     const [response, setResponse] = useState(null);
     const [error, setError] = useState(null);
+
+    let history = useHistory();
 
     let {cedula}= useParams();
 
@@ -29,6 +33,9 @@ const Historial = () => {
             }
         });
     },[]);
+    const volverHandler = () => {
+        history.push(`/home/${cedula}`)
+    } 
     return (
         <div>
             <Container>
@@ -36,6 +43,11 @@ const Historial = () => {
                     <Col lg={10} md={10} sm={10} xs={10}>
                         {!response ? (<Alert variant="primary" >No tiene datos</Alert>):(<h1>{<TablaHistorial response={response} />}</h1>) }
                     </Col>
+                </Row>
+                <Row>
+                        <Col lg={2} md={2} sm={2} xs={2}>
+                            <Button variant="success" size="lg" onClick={volverHandler}>Volver</Button>
+                        </Col>
                 </Row>
             </Container>
             

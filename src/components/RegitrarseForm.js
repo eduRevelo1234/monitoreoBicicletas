@@ -75,14 +75,14 @@ const RegitrarseForm = () => {
     const submitHandler = (e) => {
         
         if(form.password === form.password2){
-            let url = `https://eaayz8d062.execute-api.eu-west-2.amazonaws.com/User/transactions?Cedula=${form.cedula}&Nombres=${form.nombre}&Correo=${form.correo}&Password=${form.password}&Celular=${form.celular}&Contacto=${form.contacto}&Emergencia=OFF&Status=ON`;
+            let url = `https://eaayz8d062.execute-api.eu-west-2.amazonaws.com/User/transactions?Cedula=${form.cedula}&Nombres=${form.nombre}&Correo=${form.correo}&Password=${form.password}&Celular=${form.celular}&Contacto=${form.contacto}&Emergencia=OFF&Status=OFF`;
             console.log(url);
             helpHttp().get(url).then((res)=>{
                 if(!res.err){
                     setResponse(res);
                     console.log(res);
                     setError(null);
-                    alert(response.message);
+                    //alert(response.message);
                 }else{
                     setResponse(null);
                     setError(res);

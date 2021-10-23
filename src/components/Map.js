@@ -6,17 +6,12 @@ import uuid from 'react-uuid';
 
 const Map = ({cedula}) => {
     const [status, setStatus] = useState(null);
-    let url="https://ckaucqtpf3.execute-api.eu-west-2.amazonaws.com/Test/transactions?deviceId=4D6486&time=1620750125&status=ON";
     let url2="https://5ueegwgd72.execute-api.eu-west-2.amazonaws.com/Devices/transactions";
-
-    
-    
 
     const [data, setData] = useState(null);
 
     const [error, setError] = useState(null);
     
-
     useEffect(() => {
         helpHttp().get(url2).then((res) => {
             if(!res.err){
@@ -29,9 +24,6 @@ const Map = ({cedula}) => {
         });
         
     }, [status]);
-
-    
-    
 
     return (
         <div>
